@@ -1,6 +1,6 @@
 # Basic MCP Server
 
-This project provides a minimal GitHub MCP (Minecraft Control Panel) server.
+This project provides a minimal GitHub MCP (Model Context Protocol) server.
 
 ## Getting Started
 
