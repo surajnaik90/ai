@@ -8,7 +8,7 @@ Before you begin, ensure you have the following prerequisites:
 
 - **Docker**: Install Docker from [https://www.docker.com/get-started](https://www.docker.com/get-started).
 - **Node.js and npm**: Download and install from [https://nodejs.org/](https://nodejs.org/).
-- **GitHub Personal Access Token (PAT)**: Create a token by following the instructions at [Creating a personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+- **GitHub Personal Access Token (PAT)**: Create a token by following the instructions at [Creating a personal access token](https://github.com/settings/personal-access-tokens/new).
 
 Once you have these prerequisites, follow the steps below to set up the project.
 
