@@ -1,14 +1,18 @@
 # Basic MCP Server
 
-This project provides a minimal GitHub MCP (Model Context Protocol) server.
+This project demonstrates how to leverage basic TIME -  MCP(Model Context Protocol) server.
 
 ## Getting Started
 
 Before you begin, ensure you have the following prerequisites:
 
 - **Docker**: Install Docker from [https://www.docker.com/get-started](https://www.docker.com/get-started).
-- **Node.js and npm**: Download and install from [https://nodejs.org/](https://nodejs.org/).
 - **GitHub Personal Access Token (PAT)**: Create a token by following the instructions at [Creating a personal access token](https://github.com/settings/personal-access-tokens/new).
+- **uv**: Install the `uv` command line tool using pip:
+    ```sh
+    pip install uv
+    ```
+    For more details, see the [uv GitHub repository](https://github.com/astral-sh/uv).
 
 Once you have these prerequisites, follow the steps below to set up the project.
 
@@ -23,10 +27,9 @@ Once you have these prerequisites, follow the steps below to set up the project.
     npm install
     ```
 
-3. **Start the server:**
-    ```sh
-    npm start
-    ```
+3. **Update the usersettings.json in VS Code:**
+
+    ![alt text](mcp-server-config.png)
 
 ## Usage
 
