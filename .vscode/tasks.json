@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Electronics Inventory API",
+			"type": "shell",
+			"command": "dotnet run --project ElectronicsInventory/ElectronicsInventory.API/ElectronicsInventory.API.csproj",
+			"group": "none",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Electronics Inventory Web",
+			"type": "shell",
+			"command": "dotnet run --project ElectronicsInventory/ElectronicsInventory.Web/ElectronicsInventory.Web.csproj",
+			"group": "none",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Electronics Inventory (Full Stack)",
+			"dependsOn": ["Run Electronics Inventory API", "Run Electronics Inventory Web"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
