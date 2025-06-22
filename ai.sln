@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ai", "ai", "{BA58FF10-E1F2-1F22-EED5-4647CFF8BF60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "agents", "agents", "{304E6A4E-145D-CB60-C396-B9FD4DC6805F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsApi", "ai\agents\dotnet-core\ItemsApi.csproj", "{ADBDE371-3F2D-8875-FE65-AA49F975DE30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADBDE371-3F2D-8875-FE65-AA49F975DE30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBDE371-3F2D-8875-FE65-AA49F975DE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBDE371-3F2D-8875-FE65-AA49F975DE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBDE371-3F2D-8875-FE65-AA49F975DE30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{304E6A4E-145D-CB60-C396-B9FD4DC6805F} = {BA58FF10-E1F2-1F22-EED5-4647CFF8BF60}
+		{ADBDE371-3F2D-8875-FE65-AA49F975DE30} = {304E6A4E-145D-CB60-C396-B9FD4DC6805F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD83DF3B-1C17-46B4-B160-BE955A8CFE33}
+	EndGlobalSection
+EndGlobal
