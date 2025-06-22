@@ -1,4 +1,4 @@
-# PHP Installation on Windows
+# PHP Installation on Windows & How to run this PHP application
 
 Follow these steps to install PHP on Windows:
 
@@ -15,7 +15,7 @@ Follow these steps to install PHP on Windows:
 - Rename `php.ini-development` to `php.ini`.
 - Open `php.ini` in a text editor and adjust settings as needed (e.g., enable extensions).
 
-## 4. Add PHP to System Path
+## 4. Add PHP to System Path or User Path
 - Open **System Properties** > **Advanced** > **Environment Variables**.
 - Edit the `Path` variable and add the path to your PHP folder (e.g., `C:\php`).
 
@@ -26,11 +26,15 @@ Follow these steps to install PHP on Windows:
     ```
 - You should see the PHP version information.
 
-## 6. (Optional) Install a Web Server
-- For local development, install [XAMPP](https://www.apachefriends.org/), [WampServer](https://www.wampserver.com/), or configure Apache/Nginx manually.
+## 6. Navigate to this folder: `ai\agents\php`
+- Open **Command Prompt** and change directory to your project folder:
+    ```
+    cd path\to\ai\agents\php
+    ```
 
----
-
-**References:**
-- [PHP for Windows Documentation](https://windows.php.net/docs/)
-- [PHP Manual](https://www.php.net/manual/en/install.windows.php)
+## 7. Run the PHP Application
+- Start the built-in PHP server by running:
+    ```
+    php -S localhost:8000
+    ```
+- Open your browser and go to [http://localhost:8000](http://localhost:8000) to view the application.
