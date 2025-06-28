@@ -82,8 +82,8 @@
         <mxCell id="79dWbAI17CPbcTGJxEno-30" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;MCP Protocol&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="390" y="420" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="79dWbAI17CPbcTGJxEno-32" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;(VS Code with GitHub Co-pilot, Claude IDE)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="150" y="160" width="190" height="30" as="geometry" />
+        <mxCell id="79dWbAI17CPbcTGJxEno-32" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;(VS Code, Claude IDE)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="160" width="180" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
