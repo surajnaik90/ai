@@ -15,6 +15,6 @@
 
 ## Development
 
-- Generate models using the class diagram.
+- Create an ASP.NET Core class library project with the required models based on the class diagram in the development folder.
 - Create two separate layers for frontend and backend for this inventory management system.
 - Implement the "View Product Catalogue" feature.
