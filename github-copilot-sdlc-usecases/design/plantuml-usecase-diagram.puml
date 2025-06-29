@@ -1,0 +1,20 @@
+@startuml
+actor User
+left to right direction
+
+rectangle "Web: ASP.NET Core Razor Pages" {
+  usecase "Access Inventory Page" as UC1
+}
+
+rectangle "Service: ASP.NET Core REST API" {
+  usecase "Fetch Inventory Data" as UC2
+}
+
+rectangle "In Memory Repository" {
+  usecase "Query Inventory repossitory" as UC3
+}
+
+User --> UC1
+UC1 --> UC2
+UC2 --> UC3
+@enduml

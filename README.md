@@ -46,16 +46,16 @@ A **Multi Component Pipeline** (MCPipeline) is an architectural pattern that com
 ---
 
 ## 📂 Repository Structure
-
 ```
 ai/
 │
-├── use_cases/           # Example projects for various AI use cases
-├── agents/              # Agent architectures and frameworks
-├── mcps/                # Model Context Protocol implementations and docs
-├── pipelines/           # Multi Component Pipeline examples and templates
-├── docs/                # Additional documentation and guides
-└── README.md            # This file
+├── use_cases/                    # Example projects for various AI use cases
+├── agents/                       # Agent architectures and frameworks
+├── mcps/                         # Model Context Protocol implementations and docs
+├── pipelines/                    # Multi Component Pipeline examples and templates
+├── github-copilot-sdlc-usecases/ # SDLC-related use cases for GitHub Copilot
+├── docs/                         # Additional documentation and guides
+└── README.md                     # This file
 ```
 
 ---
