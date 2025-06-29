@@ -1,0 +1,73 @@
+@startuml Inventory Management System
+
+' Define the styles
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam classBackgroundColor #F8F9FA
+skinparam classBorderColor #DEE2E6
+skinparam classArrowColor #6C757D
+skinparam classFontColor #495057
+skinparam classFontSize 12
+
+' Supplier entity
+class Supplier {
+  +SupplierID : Integer <<PK>>
+  +Name : String
+  +ContactPerson : String
+  +Email : String
+  +Phone : String
+  +Address : String
+  +Active : Boolean
+  +DateAdded : DateTime
+  +Notes : Text
+}
+
+' Product entity
+class Product {
+  +ProductID : Integer <<PK>>
+  +SKU : String
+  +Name : String
+  +Description : Text
+  +Category : String
+  +DefaultSupplierID : Integer <<FK>>
+  +Cost : Decimal
+  +Active : Boolean
+}
+
+' Inventory Transaction entity
+class InventoryTransaction {
+  +TransactionID : Integer <<PK>>
+  +ProductID : Integer <<FK>>
+  +TransactionType : Enum
+  +Quantity : Decimal
+  +UnitCost : Decimal
+  +TotalCost : Decimal
+  +TransactionDate : DateTime
+  +Location : String
+  +Notes : Text
+  +SupplierID : Integer <<FK>>
+}
+
+' Enumerations
+enum TransactionType {
+  RECEIVE
+  SALE
+}
+
+' Define relationships
+Product "*" -- "1" Supplier : supplied by >
+InventoryTransaction "*" -- "1" Product : affects >
+InventoryTransaction "*" -- "0..1" Supplier : sourced from >
+InventoryTransaction -- TransactionType : is of type >
+
+note "Each Product must have a\ndefault Supplier" as N1
+Product .. N1
+Supplier .. N1
+
+note "For Receive transactions:\n- Quantity must be positive\n- SupplierID is required" as N2
+InventoryTransaction .. N2
+
+note "For Sale transactions:\n- Quantity must be negative" as N3
+InventoryTransaction .. N3
+
+@enduml

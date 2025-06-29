@@ -1,0 +1,4 @@
+# Genetate a requirement document
+Create a detailed requirement document in a text fomat for managing the 
+inventory wtith these 3 models: Supplier, Product, Inventory transaction
+
