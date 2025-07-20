@@ -6,6 +6,7 @@
 #5. Create arrays with random values
 #6. Create arrays with ones.
 #7. Fill arrays with a specific value
+#8. Create an identity matrix
 
 #Create numpy arrays
 import numpy as np
@@ -92,3 +93,7 @@ print("1D array of ones:", single_one_array)
 #fill arrays with a specific value
 filled_array = np.full((2, 3), 7)  # 2D array filled with the value 7
 print("2D array filled with 7:\n", filled_array)
+
+#Create an identity matrix
+identity_matrix = np.eye(3)
+print("Identity matrix:\n", identity_matrix)
