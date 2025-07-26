@@ -21,9 +21,9 @@ else:
 
 ## Key Concepts
 
-- **Dense**: Connects all neurons from the previous layer to the next layer.
+- **Dense**: Create a neural network layer using Dense in TensorFlow.
 - **units**: Number of neurons in the layer.
-- **activation**: Function applied to the output, e.g., sigmoid.
+- **activation**: Function applied to an each neuron in the layer, e.g., sigmoid.
 - **x**: Input data.
 - **a1**: Output of the first layer.
 - **a2**: Output of the second layer.
