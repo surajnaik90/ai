@@ -1,14 +1,22 @@
-GPT 5 Thoughts:
+# GPT-5 Thoughts
 
-Training:
+## Facts:
+- Launched on Aug 7 2025. PhD level assistant.
 
-- Trained on Azure AI supercomputers - 25k NVIDIA GPUs - A100
+## Training
 
+- Trained on Azure AI supercomputers (25,000 NVIDIA A100 GPUs)
 
-Public Factuality benchmarks:
+## Benchmarks
+
+### Public Factuality
 - LongFact
 - FActScore
 
-Better:
-- Agentic tasks. Even the long running agentic tasks.
-- Deeper codebase understanding. 
+## Improvements
+
+- Enhanced agentic task performance, including long-running agentic tasks
+- Deeper codebase understanding
+- More detailed instruction following
+- Multi-layered, logical grouping for deeper concept understanding
+- Reduced hallucinations
