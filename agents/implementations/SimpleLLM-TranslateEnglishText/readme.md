@@ -1,4 +1,4 @@
-# Building a Simple LLM application (Python) - Translate English to anoher language text
+# Building a Simple LLM application (Python) - Translate English to Kannada
 
 ## Pre-requisites (Windows)
 
@@ -45,5 +45,3 @@
 
    set GOOGLE_API_KEY = "google-gemini-api-key"
    ```
-
-6. 
