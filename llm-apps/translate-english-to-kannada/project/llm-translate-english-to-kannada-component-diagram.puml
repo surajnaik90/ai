@@ -1,0 +1,41 @@
+@startuml llm-translate-english-to-kannada-component-diagram
+' LLM Translate English to Kannada - Component Diagram
+' Context: llm-translate-english-to-kannada.py
+' This diagram shows the script, its dependencies, LangChain pieces, and the external LLM provider.
+
+title LLM Translate (English -> Kannada) - Component Diagram
+
+skinparam componentStyle rectangle
+skinparam wrapWidth 200
+
+actor User as user
+
+component "CLI Script\nllm-translate-english-to-kannada.py" as Script
+
+package "LangChain" {
+  component "init_chat_model()" as InitChat
+  component "ChatModel\n(LLM client)" as ChatModel
+  component "Messages\n(SystemMessage, HumanMessage)" as Messages
+}
+
+node "Model Providers" {
+  component "Google Gemini 2.5 Flash API" as Gemini <<external>>
+  component "OpenAI Chat API" as OpenAI <<external>>
+}
+
+user --> Script : Run script
+
+' Model setup via LangChain
+Script ..> InitChat : init_chat_model("gemini-2.5-flash",\nprovider="google_genai")
+InitChat --> ChatModel : returns model instance
+
+' Prompt/message construction
+Script ..> Messages : build System + Human messages
+
+' Inference invocation
+Script --> ChatModel : invoke(messages)
+ChatModel --> Gemini : HTTPS API call
+Gemini --> ChatModel : response (translation)
+ChatModel --> Script : response content
+
+@enduml
