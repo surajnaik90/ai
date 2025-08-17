@@ -9,7 +9,8 @@
               
 
 - Logic gates: Abstraction over transistors. This is to make concept understanding easier.
-               Thes are nothig but transistors put in a certain way to perform binary operations.
+               These are nothing but transistors put in a certain way to perform binary operations.
+               Ex: Logic gate board kit can be brought to study different logic gates.
  
 
 # Photolithography process
