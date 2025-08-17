@@ -8,7 +8,17 @@
 - TFLOP - Tera Floating Point Operations per second = 10^12 (1 trillion) operations / second
 - Tensor Core: Processing unit to handle matrix operations.
 
-## NVIDIA H200 GPU
+## NVIDIA A100 GPU [Ampere Architecture]
 
-- Used for training LLMs
-- Cost: Approximate: Rs. 50lakh / GPU.
+- Thermal Design Power = 300 Watts
+  This meaning a ceiling fan of 30W (Havells fan) running for 10hrs (whole night)
+  would draw a same amount of power as that of NVIDIA A100 running for 1 hr at full power.
+
+
+## NVIDIA H200 GPU [Hopper Architecture]
+
+- Size (aaproximate) = 15cm X 15 cm, Weight = 2kg [It comes in system of 8 units and other variants]
+- Used for training LLMs - GPT 5
+- Cost: Approximate: Rs. 30lakh / GPU.
+- Thermal design power = 700 Watts => 30 minutes of power drawn ~ 10 hr of 30W power drawn by a ceiling fan (aaproximate)
+- It contains 80 billion transistors
