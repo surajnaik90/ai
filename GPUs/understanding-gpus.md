@@ -1,5 +1,11 @@
 # Understanding GPU
 
+## Facts
+
+- Photolithography : Billions of transistors are printed (patterned actually) on the silicon wafer.
+  UV light is passed through Mask, Lens before printing it on the silicon wafer. [ASML company]
+  Mask has in what pattern to print.
+
 ## Commom terminologies
 
 - FP32 - Single precision floating point -  7 digits precision after decimal point
