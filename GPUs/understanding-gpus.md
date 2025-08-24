@@ -28,3 +28,14 @@
 - Cost: Approximate: Rs. 30lakh / GPU.
 - Thermal design power = 700 Watts => 30 minutes of power drawn ~ 10 hr of 30W power drawn by a ceiling fan (aaproximate)
 - It contains 80 billion transistors
+- Gate length between source and drainer is not disclosed. It could be 15nm - 20nm
+
+## Ampere vs Hopper Architecture
+
+|  | Ampere | Hopper |
+|------|------|------|
+| Launch year | 2020 | 2022 |
+| Built for | Traditional AI, High Performance Computing | AI, LLMs, Transformer architecture |
+| Process Node technology | 7nm | 4nm |
+| Transistor Count (B) | ~54 (approx) billion | 80 billion |
+| Memory bandwidth | 2TB/sec | 3TB/sec |
