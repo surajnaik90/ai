@@ -1,0 +1,128 @@
+@startuml PlaywrightArchitecture
+title Playwright Architecture - Component Diagram
+caption High-level components and their interactions during an end-to-end test run.
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam ArrowColor #555555
+skinparam RectangleFontColor #202020
+skinparam RectangleFontSize 12
+skinparam component {
+  BackgroundColor #f9f9f9
+  BorderColor #888888
+}
+skinparam package {
+  BackgroundColor #ffffff
+  BorderColor #666666
+}
+
+rectangle "Developer Machine / CI Host" as Host {
+  package "Test Layer" as TestLayer {
+    component "User Test Code\n(specs)" as UserTests
+    component "Playwright Test Runner\n(@playwright/test CLI)" as Runner
+    component "Reporters &\nPlugins" as Reporters
+  }
+
+  package "Playwright Core" as Core {
+    component "Playwright Driver\n(Protocol Dispatcher)" as Driver
+    component "Fixture &\nContext Manager" as FixtureMgr
+    component "Locator & Selector\nEngine" as SelectorEngine
+    component "Auto-Wait /\nAssertions Engine" as AutoWait
+    component "Network Interception\n& Routing" as NetIntercept
+    component "Tracing &\nArtifacts Service" as TraceSvc
+  }
+
+  package "Artifacts" as Artifacts {
+    component "Traces" as TraceFiles
+    component "Videos" as Videos
+    component "Screenshots" as Screenshots
+    component "Logs &\nReports" as Logs
+  }
+}
+
+rectangle OS as OperatingSystem {
+  package "Browsers (Pinned Builds)" as Browsers {
+    component "Chromium\n(pinned)" as ChromiumPinned
+    component "Firefox\n(patched)" as FirefoxPinned
+    component "WebKit\n(patched)" as WebKitPinned
+  }
+
+  package "Optional System Channels" as Channels {
+    component "Chrome\n(stable/beta/dev)" as ChromeChannel
+    component "Edge\n(stable/beta/dev)" as EdgeChannel
+  }
+}
+
+package "Per Browser Process" as BrowserProcessTemplate {
+  component "Browser Process" as BrowserProcess
+  component "BrowserContext 1" as Ctx1
+  component "BrowserContext 2" as Ctx2
+  component "Page(s) / Tab(s)" as Pages
+}
+
+note right of BrowserProcessTemplate
+One process per engine instance launched.
+Multiple isolated BrowserContexts act like
+separate incognito profiles. Each context
+can host multiple Pages (tabs / frames).
+end note
+
+UserTests --> Runner : executes tests
+Runner --> FixtureMgr : setup/teardown
+Runner --> Driver : start/stop browsers
+FixtureMgr --> Driver : create contexts/pages
+UserTests --> AutoWait : expect()/assert
+UserTests --> SelectorEngine : resolve locators
+AutoWait --> SelectorEngine
+Driver --> NetIntercept : route(request)
+Driver --> TraceSvc : record events
+TraceSvc --> TraceFiles
+TraceSvc --> Videos
+TraceSvc --> Screenshots
+Runner --> Reporters : test lifecycle events
+Reporters --> Logs
+
+Driver --> ChromiumPinned : launch / connect
+Driver --> FirefoxPinned
+Driver --> WebKitPinned
+Driver --> ChromeChannel : optional channel launch
+Driver --> EdgeChannel : optional channel launch
+
+ChromiumPinned --> BrowserProcess
+FirefoxPinned --> BrowserProcess
+WebKitPinned --> BrowserProcess
+
+BrowserProcess --> Ctx1 : newContext()
+BrowserProcess --> Ctx2 : newContext()
+Ctx1 --> Pages : newPage()
+Ctx2 --> Pages
+
+NetIntercept .. Pages : intercept network
+AutoWait .. Pages : wait for readiness
+SelectorEngine .. Pages : query DOM
+TraceSvc .. Pages : capture snapshots
+
+artifact TraceFiles as TF
+artifact Videos as VF
+artifact Screenshots as SF
+artifact Logs as LF
+
+TF -[hidden]-> VF
+VF -[hidden]-> SF
+SF -[hidden]-> LF
+
+note bottom of Artifacts
+Artifacts emitted locally (or to CI storage).
+Trace viewer & HTML report consume these outputs.
+end note
+
+legend right
+  |Component|Description|
+  |User Test Code|Your spec files invoking Playwright API|
+  |Driver|Marshals API calls to browser protocol|
+  |BrowserContext|Isolated storage & permissions sandbox|
+  |Page|Single tab / top-level browsing context|
+endlegend
+
+@enduml
