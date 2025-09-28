@@ -1,0 +1,3 @@
+The neural network above produces two feature vectors, a user feature vector  𝑣𝑢
+ , and a movie feature vector,  𝑣𝑚
+ . These are 32 entry vectors whose values are difficult to interpret. However, similar items will have similar vectors. This information can be used to make recommendations. For example, if a user has rated "Toy Story 3" highly, one could recommend similar movies by selecting movies with similar movie feature vectors.
