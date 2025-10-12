@@ -18,6 +18,7 @@ model = tf.keras.Sequential(
     ]
 )
 
+# sgd: stochastic gradient descent
 model.compile(optimizer='sgd', loss='mean_squared_error')
 
 model.fit(no_of_bedrooms, bedroom_prices, epochs=500)
