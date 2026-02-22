@@ -34,7 +34,33 @@ It talks to LLM model and goes through multiple iterations to generate a better 
 2. Tasks
 3. Crew
 
+## Crew AI framework notes
+
+1. Role, goal, backstory, allow_delegation are used when creating an agent   
+2. Crew AI has tools package which inlcudes tools such as WebsiteSearchTool, ScrapeWebsiteTool, SerperDevTool (for google search) etc   
+3. Give tool at the agent level or taask level.   
+4. When creating a task - description, expected output and tools are given. 
+
 ## Best practices for building AI agents
 
 1. Have separate agents for distinct tasks. Do not mix responsibilities for an AI agent.
    Similar to Single Responsibility Principle.
+
+## Important questions:
+
+1. When does an agent decides to delegate a task to another agent?   
+
+   It's based on the depth of answer required based on the question asked. It's when tasks are delegated to the right agent.   
+   Models have a level of cognition based on which tasks are delegated.    
+   If simple, tasks are executed by single agents. This is called AI engineering.
+
+## Sample Code
+
+```python
+crew = Crew(
+    agents=[support_agent, support_quality_assurance_agent],
+    tasks=[inquiry_resolution, quality_assurance_review],
+    verbose=2,
+    memory=True
+)
+```
