@@ -1,0 +1,120 @@
+.thoughts-list-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+
+.thoughts-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.thoughts-header h3 {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.thoughts-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #999;
+  font-style: italic;
+}
+
+.thought-card {
+  background: #fafafa;
+  border-left: 4px solid #667eea;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.thought-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.thought-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.thought-category {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.thought-date {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.thought-content {
+  color: #333;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 1rem;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-1px);
+}
+
+.delete-btn:active {
+  transform: translateY(0);
+}
+
+/* Scrollbar styling */
+.thoughts-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.thoughts-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.thoughts-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.thoughts-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
