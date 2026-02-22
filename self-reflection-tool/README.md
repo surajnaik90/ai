@@ -1,12 +1,5 @@
 # Self Reflection Tool
 
-**Created by:** Suraj Naik  
-**Location:** Bengaluru, Electronic City  
-**Date:** February 14, 2026
-
-## Intention
-To capture my thoughts to improve myself and influence humanity for a better world.
-
 ## Description
 A personal reflection tool to capture opinions and thoughts on various topics including:
 - **Personal**: Health, fun activities, personal growth
