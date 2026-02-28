@@ -4,6 +4,8 @@ import './ThoughtInput.css';
 const ThoughtInput = ({ onAddThought }) => {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('Personal');
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -18,13 +20,34 @@ const ThoughtInput = ({ onAddThought }) => {
     }
     
     try {
-      await onAddThought(content, category);
+      await onAddThought(content, category, tags);
       setContent('');
+      setTags([]);
+      setTagInput('');
       setSuccess('Reflection added successfully!');
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to add reflection');
     }
+  };
+
+  const handleTagInputKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      addTag();
+    }
+  };
+
+  const addTag = () => {
+    const trimmedTag = tagInput.trim();
+    if (trimmedTag && !tags.includes(trimmedTag)) {
+      setTags([...tags, trimmedTag]);
+      setTagInput('');
+    }
+  };
+
+  const removeTag = (tagToRemove) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
   return (
@@ -67,6 +90,35 @@ const ThoughtInput = ({ onAddThought }) => {
             rows="10"
             className="thought-textarea"
           />
+        </div>
+
+        <div className="form-group">
+          <label>Tags (optional)</label>
+          <div className="tags-container">
+            {tags.map((tag, index) => (
+              <span key={index} className="tag">
+                {tag}
+                <button
+                  type="button"
+                  onClick={() => removeTag(tag)}
+                  className="tag-remove"
+                  aria-label="Remove tag"
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+          <input
+            type="text"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            onKeyDown={handleTagInputKeyDown}
+            onBlur={addTag}
+            placeholder="Type a tag and press Enter or comma..."
+            className="tag-input"
+          />
+          <small className="tag-hint">Press Enter or comma to add tags</small>
         </div>
 
         <button type="submit" className="submit-btn">

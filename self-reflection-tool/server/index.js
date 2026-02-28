@@ -45,7 +45,7 @@ const writeThoughts = (data) => {
 // Get all thoughts
 app.get('/api/thoughts', (req, res) => {
   try {
-    const { category, month, year } = req.query;
+    const { category, month, year, tag } = req.query;
     let data = readThoughts();
     let thoughts = data.thoughts;
 
@@ -64,6 +64,9 @@ app.get('/api/thoughts', (req, res) => {
         return date.getFullYear() === parseInt(year);
       });
     }
+    if (tag) {
+      thoughts = thoughts.filter(t => t.tags && t.tags.includes(tag));
+    }
 
     res.json({ thoughts });
   } catch (error) {
@@ -75,7 +78,7 @@ app.get('/api/thoughts', (req, res) => {
 app.post('/api/thoughts', (req, res) => {
   try {
     console.log('Received request body:', req.body);
-    const { content, category } = req.body;
+    const { content, category, tags } = req.body;
     
     if (!content || !category) {
       console.log('Missing content or category');
@@ -93,6 +96,7 @@ app.post('/api/thoughts', (req, res) => {
       id: Date.now().toString(),
       content,
       category,
+      tags: tags || [],
       timestamp: new Date().toISOString(),
     };
 
@@ -111,7 +115,7 @@ app.post('/api/thoughts', (req, res) => {
 app.put('/api/thoughts/:id', (req, res) => {
   try {
     const { id } = req.params;
-    const { content, category } = req.body;
+    const { content, category, tags } = req.body;
     
     if (!content || !category) {
       return res.status(400).json({ error: 'Content and category are required' });
@@ -144,6 +148,7 @@ app.put('/api/thoughts/:id', (req, res) => {
       ...thought,
       content,
       category,
+      tags: tags || [],
       lastModified: new Date().toISOString()
     };
     
@@ -151,6 +156,27 @@ app.put('/api/thoughts/:id', (req, res) => {
     res.json(data.thoughts[thoughtIndex]);
   } catch (error) {
     res.status(500).json({ error: 'Failed to update thought' });
+  }
+});
+
+// Get all unique tags
+app.get('/api/tags', (req, res) => {
+  try {
+    const data = readThoughts();
+    const allTags = data.thoughts.reduce((tags, thought) => {
+      if (thought.tags && Array.isArray(thought.tags)) {
+        thought.tags.forEach(tag => {
+          if (!tags.includes(tag)) {
+            tags.push(tag);
+          }
+        });
+      }
+      return tags;
+    }, []);
+    
+    res.json({ tags: allTags.sort() });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch tags' });
   }
 });
 

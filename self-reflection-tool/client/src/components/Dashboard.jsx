@@ -6,10 +6,12 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const [thoughts, setThoughts] = useState([]);
+  const [availableTags, setAvailableTags] = useState([]);
   const [filters, setFilters] = useState({
     category: '',
     month: '',
     year: new Date().getFullYear().toString(),
+    tag: '',
   });
 
   const fetchThoughts = async () => {
@@ -18,6 +20,7 @@ const Dashboard = () => {
       if (filters.category) params.category = filters.category;
       if (filters.month) params.month = filters.month;
       if (filters.year) params.year = filters.year;
+      if (filters.tag) params.tag = filters.tag;
 
       const response = await axios.get('http://localhost:3001/api/thoughts', { params });
       setThoughts(response.data.thoughts);
@@ -26,28 +29,41 @@ const Dashboard = () => {
     }
   };
 
+  const fetchTags = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/api/tags');
+      setAvailableTags(response.data.tags);
+    } catch (error) {
+      console.error('Error fetching tags:', error);
+    }
+  };
+
   useEffect(() => {
     fetchThoughts();
+    fetchTags();
   }, [filters]);
 
-  const handleAddThought = async (content, category) => {
+  const handleAddThought = async (content, category, tags) => {
     try {
       const response = await axios.post('http://localhost:3001/api/thoughts', { 
         content, 
-        category 
+        category,
+        tags 
       });
       console.log('Thought added:', response.data);
       await fetchThoughts();
+      await fetchTags(); // Refresh tags list
     } catch (error) {
       console.error('Error adding thought:', error.response?.data || error.message);
       throw error; // Re-throw so ThoughtInput can display the error
     }
   };
 
-  const handleEditThought = async (id, content, category) => {
+  const handleEditThought = async (id, content, category, tags) => {
     try {
-      await axios.put(`http://localhost:3001/api/thoughts/${id}`, { content, category });
-      fetchThoughts();
+      await axios.put(`http://localhost:3001/api/thoughts/${id}`, { content, category, tags });
+      await fetchThoughts();
+      await fetchTags(); // Refresh tags list
     } catch (error) {
       console.error('Error editing thought:', error);
       throw error; // Re-throw to let ThoughtsList handle the error display
@@ -73,6 +89,16 @@ const Dashboard = () => {
               <option value="Professional">Professional</option>
               <option value="Sectors">Different Sectors</option>
               <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+
+            <select 
+              value={filters.tag} 
+              onChange={(e) => setFilters({ ...filters, tag: e.target.value })}
+            >
+              <option value="">All Tags</option>
+              {availableTags.map((tag, index) => (
+                <option key={index} value={tag}>{tag}</option>
+              ))}
             </select>
 
             <select 
