@@ -4,18 +4,45 @@ import './ThoughtInput.css';
 const ThoughtInput = ({ onAddThought }) => {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('Personal');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (content.trim()) {
-      onAddThought(content, category);
+    setError('');
+    setSuccess('');
+    
+    if (!content.trim()) {
+      setError('Please enter some content for your reflection');
+      return;
+    }
+    
+    try {
+      await onAddThought(content, category);
       setContent('');
+      setSuccess('Reflection added successfully!');
+      setTimeout(() => setSuccess(''), 3000);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to add reflection');
     }
   };
 
   return (
     <div className="thought-input-container">
       <h2>Capture Your Thoughts</h2>
+      
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
+      
+      {success && (
+        <div className="success-message">
+          {success}
+        </div>
+      )}
+      
       <form onSubmit={handleSubmit} className="thought-form">
         <div className="form-group">
           <label>Category</label>

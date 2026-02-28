@@ -14,7 +14,8 @@ const DATA_FILE = path.join(__dirname, 'data', 'thoughts.json');
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Ensure data directory and file exist
 const ensureDataFile = () => {
@@ -73,10 +74,18 @@ app.get('/api/thoughts', (req, res) => {
 // Add a new thought
 app.post('/api/thoughts', (req, res) => {
   try {
+    console.log('Received request body:', req.body);
     const { content, category } = req.body;
     
     if (!content || !category) {
+      console.log('Missing content or category');
       return res.status(400).json({ error: 'Content and category are required' });
+    }
+
+    // Check if content has actual text (not just whitespace)
+    if (!content.trim()) {
+      console.log('Content is empty or whitespace only');
+      return res.status(400).json({ error: 'Content cannot be empty or only whitespace' });
     }
 
     const data = readThoughts();
@@ -90,9 +99,11 @@ app.post('/api/thoughts', (req, res) => {
     data.thoughts.push(newThought);
     writeThoughts(data);
 
+    console.log('Thought added successfully:', newThought.id);
     res.status(201).json(newThought);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to add thought' });
+    console.error('Error adding thought:', error);
+    res.status(500).json({ error: 'Failed to add thought: ' + error.message });
   }
 });
 

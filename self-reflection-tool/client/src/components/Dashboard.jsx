@@ -32,10 +32,15 @@ const Dashboard = () => {
 
   const handleAddThought = async (content, category) => {
     try {
-      await axios.post('http://localhost:3001/api/thoughts', { content, category });
-      fetchThoughts();
+      const response = await axios.post('http://localhost:3001/api/thoughts', { 
+        content, 
+        category 
+      });
+      console.log('Thought added:', response.data);
+      await fetchThoughts();
     } catch (error) {
-      console.error('Error adding thought:', error);
+      console.error('Error adding thought:', error.response?.data || error.message);
+      throw error; // Re-throw so ThoughtInput can display the error
     }
   };
 
