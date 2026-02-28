@@ -39,12 +39,13 @@ const Dashboard = () => {
     }
   };
 
-  const handleDeleteThought = async (id) => {
+  const handleEditThought = async (id, content, category) => {
     try {
-      await axios.delete(`http://localhost:3001/api/thoughts/${id}`);
+      await axios.put(`http://localhost:3001/api/thoughts/${id}`, { content, category });
       fetchThoughts();
     } catch (error) {
-      console.error('Error deleting thought:', error);
+      console.error('Error editing thought:', error);
+      throw error; // Re-throw to let ThoughtsList handle the error display
     }
   };
 
@@ -101,7 +102,7 @@ const Dashboard = () => {
 
         <ThoughtsList 
           thoughts={thoughts} 
-          onDeleteThought={handleDeleteThought}
+          onEditThought={handleEditThought}
         />
       </div>
     </div>

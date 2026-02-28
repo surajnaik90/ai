@@ -96,23 +96,50 @@ app.post('/api/thoughts', (req, res) => {
   }
 });
 
-// Delete a thought
-app.delete('/api/thoughts/:id', (req, res) => {
+// Update a thought (only allowed on the same day it was created)
+app.put('/api/thoughts/:id', (req, res) => {
   try {
     const { id } = req.params;
-    const data = readThoughts();
+    const { content, category } = req.body;
     
-    const index = data.thoughts.findIndex(t => t.id === id);
-    if (index === -1) {
+    if (!content || !category) {
+      return res.status(400).json({ error: 'Content and category are required' });
+    }
+
+    const data = readThoughts();
+    const thoughtIndex = data.thoughts.findIndex(t => t.id === id);
+    
+    if (thoughtIndex === -1) {
       return res.status(404).json({ error: 'Thought not found' });
     }
 
-    data.thoughts.splice(index, 1);
-    writeThoughts(data);
+    const thought = data.thoughts[thoughtIndex];
+    const thoughtDate = new Date(thought.timestamp);
+    const currentDate = new Date();
+    
+    // Check if it's the same day (same year, month, and day)
+    const isSameDay = thoughtDate.getFullYear() === currentDate.getFullYear() &&
+                      thoughtDate.getMonth() === currentDate.getMonth() &&
+                      thoughtDate.getDate() === currentDate.getDate();
+    
+    if (!isSameDay) {
+      return res.status(403).json({ 
+        error: 'Thoughts can only be edited on the same day they were created' 
+      });
+    }
 
-    res.json({ message: 'Thought deleted successfully' });
+    // Update the thought
+    data.thoughts[thoughtIndex] = {
+      ...thought,
+      content,
+      category,
+      lastModified: new Date().toISOString()
+    };
+    
+    writeThoughts(data);
+    res.json(data.thoughts[thoughtIndex]);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete thought' });
+    res.status(500).json({ error: 'Failed to update thought' });
   }
 });
 

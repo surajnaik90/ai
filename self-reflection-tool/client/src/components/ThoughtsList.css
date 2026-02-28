@@ -80,8 +80,18 @@
   margin-bottom: 1rem;
 }
 
-.delete-btn {
-  background-color: #f44336;
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.75rem 1rem;
+  margin: 0 1rem 1rem 1rem;
+  border-left: 4px solid #c62828;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.edit-btn {
+  background-color: #2196F3;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -91,12 +101,108 @@
   transition: all 0.2s ease;
 }
 
-.delete-btn:hover {
-  background-color: #d32f2f;
+.edit-btn:hover {
+  background-color: #1976D2;
   transform: translateY(-1px);
 }
 
-.delete-btn:active {
+.edit-btn:active {
+  transform: translateY(0);
+}
+
+.no-edit-info {
+  color: #999;
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.edit-mode {
+  width: 100%;
+}
+
+.edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.edit-category-select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.edit-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #2196F3;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  line-height: 1.6;
+  resize: vertical;
+  margin-bottom: 1rem;
+  min-height: 100px;
+}
+
+.edit-textarea:focus {
+  outline: none;
+  border-color: #1976D2;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+}
+
+.save-btn:active {
+  transform: translateY(0);
+}
+
+.cancel-btn {
+  background-color: #757575;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.cancel-btn:hover {
+  background-color: #616161;
+  transform: translateY(-1px);
+}
+
+.cancel-btn:active {
   transform: translateY(0);
 }
 
