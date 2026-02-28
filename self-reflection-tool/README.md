@@ -61,6 +61,54 @@ npm run client
 - **Frontend**: Open your browser and navigate to `http://localhost:3000`
 - **Backend API**: Running on `http://localhost:3001`
 
+## Auto-Start on Windows Boot (Optional)
+
+To have the self-reflection tool start automatically when Windows boots, use PM2 process manager:
+
+### 1. Install PM2 and Windows Startup Module
+```bash
+npm install -g pm2
+npm install -g pm2-windows-startup
+```
+
+### 2. Configure PM2 Windows Startup
+```bash
+pm2-startup install
+```
+
+This adds PM2 to Windows registry to start on boot.
+
+### 3. Start Application with PM2
+```bash
+cd c:\Code\ai\self-reflection-tool
+pm2 start ecosystem.config.cjs
+```
+
+This starts both the server and client processes using the configuration file.
+
+### 4. Save PM2 Process List
+```bash
+pm2 save
+```
+
+This saves the current running processes so they'll be restored on reboot.
+
+### Useful PM2 Commands
+- `pm2 status` - View all running processes
+- `pm2 logs` - View logs from all processes  
+- `pm2 logs [app-name]` - View logs for specific process
+- `pm2 restart all` - Restart all processes
+- `pm2 stop all` - Stop all processes
+- `pm2 delete all` - Remove all processes from PM2
+- `pm2 monit` - Monitor processes in real-time
+
+### Uninstall Auto-Start (if needed)
+```bash
+pm2 delete all
+pm2 save
+pm2-startup uninstall
+```
+
 ## Usage
 
 ### Adding a Thought
