@@ -34,12 +34,23 @@ It talks to LLM model and goes through multiple iterations to generate a better 
 2. Tasks
 3. Crew
 
+## Crew vs Flow differences
+
+1. Crew is a multi agent collaboration
+2. Flow is for orchestrating multi step pipelines
+
 ## Crew AI framework notes
 
 1. Role, goal, backstory, allow_delegation are used when creating an agent   
 2. Crew AI has tools package which inlcudes tools such as WebsiteSearchTool, ScrapeWebsiteTool, SerperDevTool (for google search) etc   
-3. Give tool at the agent level or taask level.   
+3. Give tool at the agent level or task level.   
 4. When creating a task - description, expected output and tools are given. 
+
+## What makes a great tool?
+
+1. Tool should be versatile. It should support variety of inputs and variety of outputs.
+2. It should be fault tolerant.
+3. Caching: If 2 agents call the same tool with the same input then use caching to optimize the experience.
 
 ## Best practices for building AI agents
 
