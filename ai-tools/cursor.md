@@ -6,6 +6,7 @@ Cursor is an AI powered IDE. They have their own Composer model 1.5
 
 1. Cursor has it's own agentic model called **Composer**.
 2. Pricing based on 2 usage pools: **Auto + Composer and API**
+3. Ability to summarize **.mp4 recording** using Open AI whisper model & ffmpeg
 
 ## Pricing
 
@@ -33,6 +34,7 @@ Cursor is an AI powered IDE. They have their own Composer model 1.5
 4. Review the changes   
 5. Use rules, skills, prompts that match how your team works.
 6. Connect your workflow with GitHub, GitLab etc
+7. **Cursor can understand .mp4 file and generate a summary of the recording**
 
 ## Models pricing [prices / 1 million tokens] | As on March 2026
 
