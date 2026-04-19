@@ -49,3 +49,7 @@ Pricing is based on 2 usage pools:
 | Gemini 3 Pro | $2 | $12 |
 | GPT 5.4 | $2.5 | $15 |
 | Composer 1.5 | $3.5 | $17.5 |
+
+## Integrations
+
+It has integrations with Slack, GitHub, GitLab etc
