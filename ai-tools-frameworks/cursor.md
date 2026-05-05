@@ -7,6 +7,15 @@ Cursor is an AI powered IDE. They have their own Composer model 1.5
 1. Cursor has it's own agentic model called **Composer**.
 2. Pricing based on 2 usage pools: **Auto + Composer and API**
 3. Ability to summarize **.mp4 recording** using Open AI whisper model & ffmpeg
+4. Cursor has this semantic indexing capability which is unique.   
+
+## Features
+
+1. Using multiple models    
+2. **Debug mode** for fine-grained root cause analysis. Targeted fixes.   
+3. **Cursor rules** to maintain the consistency in naming conventions etc.    
+4. **Cursor skills** combining natural language instructions and scripts for the agent to do certain tasks.   
+
 
 ## Pricing
 
@@ -52,4 +61,4 @@ Pricing is based on 2 usage pools:
 
 ## Integrations
 
-It has integrations with Slack, GitHub, GitLab etc
+It has integrations with Slack, GitHub, GitLab, Notion, Linear, Datadog etc
