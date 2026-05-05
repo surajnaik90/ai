@@ -76,10 +76,3 @@ For a language model with large vocabulary size, there could be large no of logi
 transformer model. This would make compute intensive while computing softmax.    
 So, the top k logits with good scores are considered.
 
-### Language model performance metrics   
-
-1. **Entropy**: How much info a token holds?    
-2. **Cross-entropy**: How difficult it is predict a next token?   
-3. **Perplexity**: The amount of uncertainity in predicting the next token?     
-
-
